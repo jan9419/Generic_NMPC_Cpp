@@ -1,0 +1,50 @@
+%YAML:1.0
+
+# Config file to simulate the closed-loop response of the cstr to a step change in the setpoint c_B from maximum to minimum
+
+#--------------------------------------------------------------------------------------------
+# Simulation Parameters
+#--------------------------------------------------------------------------------------------
+# nmpc simulation begin time
+sim.t0: 0     # [h]
+# nmpc simulation step size
+sim.dt: 0.002 # [h]
+# nmpc simulation end time
+sim.tf: 0.16  # [h]
+
+#--------------------------------------------------------------------------------------------
+# Nonlinear Model Predictive Control Parameters
+#--------------------------------------------------------------------------------------------
+# nmpc inital conditions
+nmpc.x_0: [2.14, 1.09, 114.2, 112.9] # [mol/l], [mol/l], [°C], [°C]
+# nmpc terminal conditions
+nmpc.x_e: [0.8] # [mol/l]
+nmpc.x_e_index: [1]
+# number of states
+nmpc.nx: 4
+# number of inputs
+nmpc.nu: 2
+
+#--------------------------------------------------------------------------------------------
+# Optimal Control Problem Parameters
+#--------------------------------------------------------------------------------------------
+# number shooting intervals: ocp.n_ocp*ocp.dt is prediction horizon 
+ocp.n_shoot: 50 
+# ocp discretization step size
+ocp.dt: 0.002 # [h]
+# ocp solver
+ocp.solver: "ipopt"
+# ocp weights for cost function
+ocp.r: [0]
+ocp.q: [1]
+ocp.p: [0]
+# ocp constraints
+ocp.con.x_min: [0.8, 100, 100]  # [mol/l], [°C], [°C]
+ocp.con.x_max: [1.09, 115, 115] # [mol/l], [°C], [°C]
+ocp.con.x_index: [1, 2, 3]
+ocp.con.u_min: [3,  -9000] # [1/h], [kJ/h]
+ocp.con.u_max: [35,  0]    # [1/h], [kJ/h]
+ocp.con.u_index: [0, 1]
+# ocp scaling factors
+ocp.scale.x: [1, 1, 0.02, 0.02]
+ocp.scale.u: [0.1, 0.0005]

@@ -1,0 +1,26 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Simulator CSTR Model Parameters (Model-plant mismatch allowed)
+# Nonlinear Predictive Control of a Benchmark CSTR 
+# H. Chen, A. Kremling and F. Allgöwer
+#--------------------------------------------------------------------------------------------
+# definition of default parameters (Table 1 from the paper)
+model.k_10: 1.287e12     # 1/h
+model.k_20: 1.287e12     # 1/h
+model.k_30: 9.043e9      # 1/(mol A*h)
+model.dH_AB: 4.2         # kJ/(mol A)
+model.dH_BC: -11.0       # kJ/(mol B)
+model.dH_AD: -41.85      # kJ/(mol A)
+# definition of default parameters (Table 1 from the paper)
+model.E_1: -9758.3       # K
+model.E_2: -9758.3       # K
+model.E_3: -8560         # K
+model.rho: 0.9342        # kg/l
+model.C_p: 3.01          # kJ/(kg*K)
+model.k_w: 4032          # kJ/(h*m^2*K)
+model.A_R: 0.215         # m^2
+model.V_R: 10            # l
+model.m_K: 5.0           # kg
+model.C_PK: 2.0          # kJ/(kg*K)
+
