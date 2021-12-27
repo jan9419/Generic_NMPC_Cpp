@@ -36,6 +36,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 add_library(${PROJECT_NAME} SHARED
 src/ModelCSTR.cpp
+src/ModelDIPC.cpp
 src/OptimalControlProblem.cpp
 src/NonlinearModelPredictiveControl.cpp
 src/Simulator.cpp
@@ -53,3 +54,7 @@ Python3::NumPy
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/CSTR)
 add_executable(nmpc_cstr Examples/CSTR/main_cstr.cpp)
 target_link_libraries(nmpc_cstr ${PROJECT_NAME})
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/DIPC)
+add_executable(nmpc_dipc Examples/DIPC/main_dipc.cpp)
+target_link_libraries(nmpc_dipc ${PROJECT_NAME})

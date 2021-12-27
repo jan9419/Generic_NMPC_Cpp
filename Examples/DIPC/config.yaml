@@ -1,0 +1,50 @@
+%YAML:1.0
+
+# Config file to test to stabilize the DIPC when both pendulums were initially deflected from their vertical position up to e.g. 30 degrees
+
+#--------------------------------------------------------------------------------------------
+# Simulation Parameters
+#--------------------------------------------------------------------------------------------
+# nmpc simulation begin time
+sim.t0: 0    # [s]
+# nmpc simulation step size
+sim.dt: 0.02 # [s]
+# nmpc simulation end time
+sim.tf: 10   # [s]
+
+#--------------------------------------------------------------------------------------------
+# Nonlinear Model Predictive Control Parameters
+#--------------------------------------------------------------------------------------------
+# nmpc inital conditions (both pendulums are initially deflected with approximately 30 degrees in similiar direction)
+nmpc.x_0: [0, 0.5, 0.5, 0, 0, 0] # [m], [rad], [rad], [m/s], [rad/s], [rad/s]
+# nmpc terminal conditions 
+nmpc.x_e: [0, 0, 0, 0, 0, 0]     # [m], [rad], [rad], [m/s], [rad/s], [rad/s]
+nmpc.x_e_index: [0, 1, 2, 3, 4, 5]
+# number of states
+nmpc.nx: 6
+# number of inputs
+nmpc.nu: 1
+
+#--------------------------------------------------------------------------------------------
+# Optimal Control Problem Parameters
+#--------------------------------------------------------------------------------------------
+# number shooting intervals: ocp.n_ocp*ocp.dt is prediction horizon 
+ocp.n_shoot: 50
+# ocp discretization step size
+ocp.dt: 0.02 # [s]
+# ocp solver
+ocp.solver: "ipopt"
+# ocp weights for cost function
+ocp.r: [0.01]
+ocp.q: [1, 1, 1, 1, 1, 1]
+ocp.p: [100, 100, 100, 100, 100, 100]
+# ocp constraints
+ocp.con.x_min: [-5] # [m]
+ocp.con.x_max: [5]  # [m]
+ocp.con.x_index: [0]
+ocp.con.u_min: [-1000] # [N]
+ocp.con.u_max: [1000]  # [N]
+ocp.con.u_index: [0]
+# ocp scaling factors
+ocp.scale.x: [1, 1, 1, 1, 1, 1]
+ocp.scale.u: [0.1]

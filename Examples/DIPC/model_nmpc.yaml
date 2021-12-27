@@ -1,0 +1,14 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# NMPC Model Parameters (Model-plant mismatch allowed)
+# Optimal Control of a Double Inverted Pendulum on a Cart 
+# A. Bogdanov
+#--------------------------------------------------------------------------------------------
+# definition of model parameters (Table 1 in the paper)
+model.g: 9.81       # m/(s^2)
+model.m_0: 1.5      # kg
+model.m_1: 0.5      # kg
+model.m_2: 0.75     # kg
+model.L_1: 0.5      # m
+model.L_2: 0.75     # m
